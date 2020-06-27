@@ -34,7 +34,23 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Icon(Icons.ac_unit),
+            Text(widget.title),
+            RaisedButton(
+              onPressed: () {},
+              child: Text('click me'),
+            ),
+            RaisedButton(
+              onPressed: () {},
+              child: Text('click me'),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
