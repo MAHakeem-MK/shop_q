@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shopq/pages/CustomerHome.dart';
+import 'package:shopq/pages/ShopOwnerHome.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -23,14 +25,20 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               width: buttonWidth,
               child: RaisedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ShopOwnerHome()));
+                },
                 child: Text("I'm a Shop Owner"),
               ),
             ),
             SizedBox(
               width: buttonWidth,
               child: RaisedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => CustomerHome()));
+                },
                 child: Text("I'm a Customer"),
               ),
             )
