@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopq/pages/HomePage.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,41 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepOrange,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: title),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Icon(Icons.ac_unit),
-            Text(widget.title),
-            RaisedButton(
-              onPressed: () {},
-              child: Text('click me'),
-            ),
-            RaisedButton(
-              onPressed: () {},
-              child: Text('click me'),
-            )
-          ],
-        ),
-      ),
+      home: HomePage(title: title),
     );
   }
 }
