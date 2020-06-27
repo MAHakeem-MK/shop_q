@@ -1,4 +1,4 @@
-# shopq
+# ShopQ
 
 A virtual queue for shops to keep social distancing.
 
