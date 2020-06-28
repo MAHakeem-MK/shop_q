@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shopq/repositories/customers.dart';
+import 'package:getflutter/components/avatar/gf_avatar.dart';
+import 'package:getflutter/getflutter.dart';
+import 'package:shopq/repositories/orders.dart';
 
 class ShopOwnerHome extends StatefulWidget {
   ShopOwnerHome({Key key, this.title}) : super(key: key);
@@ -13,12 +15,13 @@ class ShopOwnerHome extends StatefulWidget {
 class _ShopOwnerHomeState extends State<ShopOwnerHome> {
   double buttonWidth = 180;
   int _currentIndex = 0;
+  String _title = 'Orders';
   final List<Widget> _tabViews = [NewOrders(), ReadyToServe(), Inventory()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Orders'),
+        title: Text(_title),
       ),
       body: _tabViews[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -26,6 +29,11 @@ class _ShopOwnerHomeState extends State<ShopOwnerHome> {
           onTap: (int index) {
             setState(() {
               _currentIndex = index;
+              if(_currentIndex == 2) {
+                _title = 'Inventory';
+              } else {
+                _title = 'Orders';
+              }
             });
           },
           items: [
@@ -40,28 +48,73 @@ class _ShopOwnerHomeState extends State<ShopOwnerHome> {
   }
 }
 
-class NewOrders extends StatelessWidget {
+class NewOrders extends StatefulWidget {
+  @override
+  _NewOrdersState createState() => _NewOrdersState();
+}
+
+class _NewOrdersState extends State<NewOrders> {
+
   @override
   Widget build(BuildContext context) {
     return Center(
       child: ListView.separated(
           itemBuilder: (context, position) => ListTile(
-                leading: Icon(Icons.person_pin),
-                title: Text(Customers.allCustomers[position].name),
-                subtitle: Text(Customers.allCustomers[position].phone),
+                leading: GFAvatar(
+                  backgroundColor: Colors.grey,
+                  backgroundImage: AssetImage('assets/blank_profile.png'),
+                ),
+                title: Text(Orders.newOrders[position].name),
+                subtitle: Text(Orders.newOrders[position].phone),
+                trailing: Checkbox(
+                    value: Orders.newOrders[position].isReady,
+                    onChanged: (state) {
+                      setState(() {
+                        Orders.newOrders[position].isReady = state;
+                        Orders.readyToServe.add(Orders.newOrders[position]);
+                        Orders.newOrders.remove(Orders.newOrders[position]);
+                      });
+                    }),
               ),
           separatorBuilder: (context, position) => Divider(
                 color: Theme.of(context).accentColor,
               ),
-          itemCount: Customers.allCustomers.length),
+          itemCount: Orders.newOrders.length),
     );
   }
 }
 
-class ReadyToServe extends StatelessWidget {
+class ReadyToServe extends StatefulWidget {
+  @override
+  _ReadyToServeState createState() => _ReadyToServeState();
+}
+
+class _ReadyToServeState extends State<ReadyToServe> {
   @override
   Widget build(BuildContext context) {
-    return Center();
+    return Center(
+      child: ListView.separated(
+          itemBuilder: (context, position) => ListTile(
+            leading: GFAvatar(
+              backgroundColor: Colors.grey,
+              backgroundImage: AssetImage('assets/blank_profile.png'),
+            ),
+            title: Text(Orders.readyToServe[position].name),
+            subtitle: Text(Orders.readyToServe[position].phone),
+            trailing: Checkbox(
+                value: Orders.readyToServe[position].isDone,
+                onChanged: (state) {
+                  setState(() {
+                    Orders.readyToServe[position].isDone = state;
+                    Orders.readyToServe.remove(Orders.readyToServe[position]);
+                  });
+                }),
+          ),
+          separatorBuilder: (context, position) => Divider(
+            color: Theme.of(context).accentColor,
+          ),
+          itemCount: Orders.readyToServe.length),
+    );
   }
 }
 
