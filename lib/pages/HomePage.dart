@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shopq/pages/CustomerHome.dart';
 import 'package:shopq/pages/ShopOwnerHome.dart';
+import 'package:getflutter/getflutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -21,10 +23,16 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Icon(Icons.ac_unit),
-            Text(widget.title),
+            Padding(
+              padding: const EdgeInsets.all(32.0),
+              child: Text(widget.title,style: GoogleFonts.piedra(fontSize: 24.0,color: Theme.of(context).primaryColorDark),),
+            ),
             SizedBox(
               width: buttonWidth,
-              child: RaisedButton(
+              child: GFButton(
+                color: Theme.of(context).accentColor,
+                size: GFSize.LARGE,
+                type: GFButtonType.outline2x,
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => ShopOwnerHome()));
@@ -34,7 +42,10 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(
               width: buttonWidth,
-              child: RaisedButton(
+              child: GFButton(
+                color: Theme.of(context).accentColor,
+                size: GFSize.LARGE,
+                type: GFButtonType.outline2x,
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => CustomerHome()));
