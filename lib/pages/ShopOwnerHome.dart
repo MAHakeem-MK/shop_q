@@ -26,9 +26,9 @@ class _ShopOwnerHomeState extends State<ShopOwnerHome> {
                 )),
       ),
       bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(icon: Icon(Icons.title),title: Text("New Orders")),
-        BottomNavigationBarItem(icon: Icon(Icons.ac_unit),title: Text("Ready to serve")),
-        BottomNavigationBarItem(icon: Icon(Icons.access_alarm),title: Text("Inventory")),
+        BottomNavigationBarItem(icon: Icon(Icons.save_alt),title: Text("New Orders")),
+        BottomNavigationBarItem(icon: Icon(Icons.unarchive),title: Text("Ready to serve")),
+        BottomNavigationBarItem(icon: Icon(Icons.store),title: Text("Inventory")),
       ]),
     );
   }
