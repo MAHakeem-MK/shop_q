@@ -25,6 +25,11 @@ class _ShopOwnerHomeState extends State<ShopOwnerHome> {
                   title: Text(Customers.allCustomers[position].name),
                 )),
       ),
+      bottomNavigationBar: BottomNavigationBar(items: [
+        BottomNavigationBarItem(icon: Icon(Icons.title),title: Text("New Orders")),
+        BottomNavigationBarItem(icon: Icon(Icons.ac_unit),title: Text("Ready to serve")),
+        BottomNavigationBarItem(icon: Icon(Icons.access_alarm),title: Text("Inventory")),
+      ]),
     );
   }
 }
