@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopq/pages/ShopDetails.dart';
 import 'package:shopq/repositories/shops.dart';
 
 class CustomerHome extends StatefulWidget {
@@ -24,6 +25,14 @@ class _CustomerHomeState extends State<CustomerHome> {
         itemBuilder: (context, position) {
           return ListTile(
             title: Text(Shops.allShops[position].name),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ShopDetails(),
+                ),
+              );
+            },
           );
         },
       )),
