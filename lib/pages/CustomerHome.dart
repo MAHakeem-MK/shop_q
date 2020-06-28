@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopq/pages/ShopDetails.dart';
 import 'package:shopq/repositories/shops.dart';
+import 'package:shopq/widgets/search_form_field.dart';
 
 class CustomerHome extends StatefulWidget {
   CustomerHome({Key key, this.title}) : super(key: key);
@@ -20,21 +21,33 @@ class _CustomerHomeState extends State<CustomerHome> {
         title: Text('Near By Stores'),
       ),
       body: Center(
-          child: ListView.builder(
-        itemCount: Shops.allShops.length,
-        itemBuilder: (context, position) {
-          return ListTile(
-            title: Text(Shops.allShops[position].name),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ShopDetails(),
-                ),
-              );
-            },
-          );
-        },
+          child: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: SearchFormField(
+              hint: "Search Store",
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: Shops.allShops.length,
+              itemBuilder: (context, position) {
+                return ListTile(
+                  title: Text(Shops.allShops[position].name),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ShopDetails(),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+        ],
       )),
     );
   }
