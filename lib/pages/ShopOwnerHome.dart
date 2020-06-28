@@ -118,9 +118,30 @@ class _ReadyToServeState extends State<ReadyToServe> {
   }
 }
 
-class Inventory extends StatelessWidget {
+class Inventory extends StatefulWidget {
+  @override
+  _InventoryState createState() => _InventoryState();
+}
+
+class _InventoryState extends State<Inventory> {
   @override
   Widget build(BuildContext context) {
-    return Center();
+    return Center(
+      child: ListView.separated(
+          itemBuilder: (context, position) => ListTile(
+            leading: GFAvatar(
+              shape: GFAvatarShape.standard,
+              backgroundColor: Colors.grey,
+              backgroundImage: AssetImage('assets/product.png'),
+            ),
+            title: Text(Orders.inventory[position].name),
+            subtitle: Text(Orders.inventory[position].stock.toString()),
+
+          ),
+          separatorBuilder: (context, position) => Divider(
+            color: Theme.of(context).accentColor,
+          ),
+          itemCount: Orders.inventory.length),
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:shopq/models/Customer.dart';
+import 'package:shopq/models/Product.dart';
 
 class Orders {
   static List<Customer> newOrders = [
@@ -7,4 +8,9 @@ class Orders {
   ];
 
   static List<Customer> readyToServe = [];
+
+  static List<Product> inventory = [
+    Product(name: "Sugar",MRP: 68,stock: 1024),
+    Product(name: "Salt",MRP: 48,stock: 2048),
+  ];
 }
