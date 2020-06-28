@@ -14,7 +14,8 @@ class _CustomerHomeState extends State<CustomerHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text('customer home page'),),
+      appBar: AppBar(title: Text('Near By Stores'),),
+      body: Center(child: Text('No stores near by!'),),
     );
   }
 }

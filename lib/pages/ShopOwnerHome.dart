@@ -14,7 +14,8 @@ class _ShopOwnerHomeState extends State<ShopOwnerHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text('Shop owner page'),),
+      appBar: AppBar(title: Text('Orders'),),
+      body: Center(child: Text('No orders yet!'),),
     );
   }
 }
