@@ -22,10 +22,14 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Icon(Icons.ac_unit),
+            SizedBox(width: 140, child: Image.asset('assets/shopq_logo.png')),
             Padding(
               padding: const EdgeInsets.all(32.0),
-              child: Text(widget.title,style: GoogleFonts.piedra(fontSize: 24.0,color: Theme.of(context).primaryColorDark),),
+              child: Text(
+                widget.title,
+                style: GoogleFonts.piedra(
+                    fontSize: 24.0, color: Theme.of(context).primaryColorDark),
+              ),
             ),
             SizedBox(
               width: buttonWidth,
