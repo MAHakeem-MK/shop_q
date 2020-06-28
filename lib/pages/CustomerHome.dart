@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopq/repositories/shops.dart';
 
 class CustomerHome extends StatefulWidget {
   CustomerHome({Key key, this.title}) : super(key: key);
@@ -14,8 +15,18 @@ class _CustomerHomeState extends State<CustomerHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Near By Stores'),),
-      body: Center(child: Text('No stores near by!'),),
+      appBar: AppBar(
+        title: Text('Near By Stores'),
+      ),
+      body: Center(
+          child: ListView.builder(
+        itemCount: Shops.allShops.length,
+        itemBuilder: (context, position) {
+          return ListTile(
+            title: Text(Shops.allShops[position].name),
+          );
+        },
+      )),
     );
   }
 }
