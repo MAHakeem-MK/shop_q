@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:getflutter/components/avatar/gf_avatar.dart';
+import 'package:getflutter/shape/gf_avatar_shape.dart';
 import 'package:shopq/pages/ShopDetails.dart';
 import 'package:shopq/repositories/shops.dart';
 import 'package:shopq/widgets/search_form_field.dart';
@@ -30,21 +32,21 @@ class _CustomerHomeState extends State<CustomerHome> {
             ),
           ),
           Expanded(
-            child: ListView.builder(
+            child: ListView.separated(
+              itemBuilder: (context, position) => ListTile(
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => ShopDetails())),
+                leading: GFAvatar(
+                  shape: GFAvatarShape.standard,
+                  backgroundColor: Colors.grey,
+                  backgroundImage: AssetImage('assets/store.png'),
+                ),
+                title: Text(Shops.allShops[position].name),
+                subtitle: Text(Shops.allShops[position].phone),
+              ),
+              separatorBuilder: (context, position) => Divider(
+                color: Theme.of(context).accentColor,
+              ),
               itemCount: Shops.allShops.length,
-              itemBuilder: (context, position) {
-                return ListTile(
-                  title: Text(Shops.allShops[position].name),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ShopDetails(),
-                      ),
-                    );
-                  },
-                );
-              },
             ),
           ),
         ],
