@@ -13,4 +13,6 @@ class Orders {
     Product(name: "Sugar",MRP: 68,stock: 1024),
     Product(name: "Salt",MRP: 48,stock: 2048),
   ];
+
+  static List<Product> carted = [];
 }

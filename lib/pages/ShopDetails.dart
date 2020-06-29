@@ -4,6 +4,7 @@ import 'package:getflutter/components/badge/gf_badge.dart';
 import 'package:getflutter/components/badge/gf_icon_badge.dart';
 import 'package:getflutter/getflutter.dart';
 import 'package:getflutter/shape/gf_avatar_shape.dart';
+import 'package:shopq/pages/cart.dart';
 import 'package:shopq/repositories/orders.dart';
 import 'package:shopq/widgets/search_form_field.dart';
 
@@ -18,7 +19,7 @@ class ShopDetails extends StatefulWidget {
 
 class _ShopDetailsState extends State<ShopDetails> {
   double buttonWidth = 180;
-  int _cartCount = 0;
+  int _cartCount = Orders.carted.length;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +28,9 @@ class _ShopDetailsState extends State<ShopDetails> {
           actions: <Widget>[
             GFIconBadge(
                 child: IconButton(
-                    icon: Icon(Icons.shopping_cart), onPressed: () {}),
+                    icon: Icon(Icons.shopping_cart), onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Cart()));
+                }),
                 counterChild: GFBadge(
                   color: Colors.blue,
                   shape: GFBadgeShape.circle,
@@ -60,6 +63,7 @@ class _ShopDetailsState extends State<ShopDetails> {
                               onPressed: () {
                                 setState(() {
                                   _cartCount++;
+                                  Orders.carted.add(Orders.inventory[position]);
                                 });
                               }),
                         ),
