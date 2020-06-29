@@ -43,7 +43,7 @@ class _ShopDetailsState extends State<ShopDetails> {
             Padding(
               padding: EdgeInsets.all(8.0),
               child: SearchFormField(
-                hint: "Search Store",
+                hint: "Search Product",
               ),
             ),
             Expanded(
@@ -57,9 +57,9 @@ class _ShopDetailsState extends State<ShopDetails> {
                           ),
                           title: Text(Orders.inventory[position].name),
                           subtitle:
-                              Text(Orders.inventory[position].MRP.toString()),
+                              Text('MRP : ${Orders.inventory[position].MRP.toString()}'),
                           trailing: IconButton(
-                              icon: Icon(Icons.add_shopping_cart),
+                              icon: Icon(Icons.add_shopping_cart,color: Colors.blue,),
                               onPressed: () {
                                 setState(() {
                                   _cartCount++;

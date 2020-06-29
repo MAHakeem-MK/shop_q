@@ -20,6 +20,8 @@ class Cart extends StatefulWidget {
 class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
+    double total = 0;
+    Orders.carted.forEach((element) {total += element.MRP;});
     return Scaffold(
         appBar: AppBar(
           title: Text('Shopping Cart'),
@@ -37,7 +39,7 @@ class _CartState extends State<Cart> {
                       ),
                       title: Text(Orders.carted[position].name),
                       subtitle:
-                      Text(Orders.carted[position].MRP.toString()),
+                      Text('MRP : ${Orders.carted[position].MRP.toString()}'),
                     ),
                     separatorBuilder: (context, position) => Divider(
                       color: Theme.of(context).accentColor,
@@ -45,6 +47,7 @@ class _CartState extends State<Cart> {
                     itemCount: Orders.carted.length),
               ),
             ),
+            ListTile(title: Text('Total Amount : $total'),),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 3.0),
               child: GFButton(
