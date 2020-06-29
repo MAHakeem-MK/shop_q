@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:getflutter/components/button/gf_button.dart';
+import 'package:getflutter/size/gf_size.dart';
+import 'package:getflutter/types/gf_button_type.dart';
 
 class CheckOut extends StatefulWidget {
   @override
@@ -66,7 +69,20 @@ class _CheckOutState extends State<CheckOut> {
                 style: TextStyle(fontSize: 16.0),
               ),
             ],
-          )
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 3.0),
+            child: GFButton(
+              fullWidthButton: true,
+              color: Theme.of(context).accentColor,
+              size: GFSize.LARGE,
+              type: GFButtonType.outline2x,
+              onPressed: () {
+                Navigator.popUntil(context, (route) => route.isFirst);
+              },
+              child: Text("Done"),
+            ),
+          ),
         ],
       ),
     );

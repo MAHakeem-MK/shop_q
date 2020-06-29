@@ -127,21 +127,38 @@ class _InventoryState extends State<Inventory> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ListView.separated(
-          itemBuilder: (context, position) => ListTile(
-            leading: GFAvatar(
-              shape: GFAvatarShape.standard,
-              backgroundColor: Colors.grey,
-              backgroundImage: AssetImage('assets/product.png'),
-            ),
-            title: Text(Orders.inventory[position].name),
-            subtitle: Text(Orders.inventory[position].stock.toString()),
+      child: Column(
+        children: [
+          Expanded(
+            child: ListView.separated(
+                itemBuilder: (context, position) => ListTile(
+                  leading: GFAvatar(
+                    shape: GFAvatarShape.standard,
+                    backgroundColor: Colors.grey,
+                    backgroundImage: AssetImage('assets/product.png'),
+                  ),
+                  title: Text(Orders.inventory[position].name),
+                  subtitle: Text('Available : ${Orders.inventory[position].stock.toString()}'),
 
+                ),
+                separatorBuilder: (context, position) => Divider(
+                  color: Theme.of(context).accentColor,
+                ),
+                itemCount: Orders.inventory.length),
           ),
-          separatorBuilder: (context, position) => Divider(
-            color: Theme.of(context).accentColor,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 3.0),
+            child: GFButton(
+              fullWidthButton: true,
+              color: Theme.of(context).accentColor,
+              size: GFSize.LARGE,
+              type: GFButtonType.outline2x,
+              onPressed: () {},
+              child: Text("Add More Products"),
+            ),
           ),
-          itemCount: Orders.inventory.length),
+        ],
+      ),
     );
   }
 }
