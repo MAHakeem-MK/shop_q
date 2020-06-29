@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:getflutter/components/avatar/gf_avatar.dart';
+import 'package:getflutter/components/button/gf_button.dart';
 import 'package:getflutter/shape/gf_avatar_shape.dart';
+import 'package:getflutter/size/gf_size.dart';
+import 'package:getflutter/types/gf_button_type.dart';
 import 'package:shopq/repositories/orders.dart';
+
+import 'CheckOut.dart';
 
 class Cart extends StatefulWidget {
   Cart({Key key, this.title}) : super(key: key);
@@ -38,6 +43,20 @@ class _CartState extends State<Cart> {
                       color: Theme.of(context).accentColor,
                     ),
                     itemCount: Orders.carted.length),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 3.0),
+              child: GFButton(
+                fullWidthButton: true,
+                color: Theme.of(context).accentColor,
+                size: GFSize.LARGE,
+                type: GFButtonType.outline2x,
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => CheckOut()));
+                },
+                child: Text("Check out"),
               ),
             ),
           ],
