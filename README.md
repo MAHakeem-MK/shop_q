@@ -2,7 +2,7 @@
 
 A virtual queue app for shops to keep social distancing.
 
-### Experience at : https://github.com/MAHakeem-MK/shop_q
+### Experience at : https://mahakeem-mk.github.io/shop_q/#/
 
 ## Keep queueing in ShopQ!!
 When I visited my nearest shop to purchase something to fulfill my daily needs.I found that there are a lot of people crowded in front of the store.We want to keep social distance for safety of ourselves in this pandemic situation.
