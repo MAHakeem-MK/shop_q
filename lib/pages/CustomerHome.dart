@@ -42,7 +42,12 @@ class _CustomerHomeState extends State<CustomerHome> {
                   backgroundImage: AssetImage('assets/store.png'),
                 ),
                 title: Text(Shops.allShops[position].name),
-                subtitle: Text(Shops.allShops[position].phone),
+                subtitle: Row(
+                  children: [
+                    Icon(Icons.phone,size: 15.0,color: Colors.blue,),
+                    Text(Shops.allShops[position].phone),
+                  ],
+                ),
               ),
               separatorBuilder: (context, position) => Divider(
                 color: Theme.of(context).accentColor,
