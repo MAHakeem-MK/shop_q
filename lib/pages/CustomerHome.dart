@@ -34,7 +34,8 @@ class _CustomerHomeState extends State<CustomerHome> {
           Expanded(
             child: ListView.separated(
               itemBuilder: (context, position) => ListTile(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => ShopDetails())),
+                onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => ShopDetails())),
                 leading: GFAvatar(
                   shape: GFAvatarShape.standard,
                   backgroundColor: Colors.grey,
